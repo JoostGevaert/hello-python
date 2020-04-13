@@ -1,0 +1,9 @@
+ipykernel
+jupyter
+jupyterlab
+psycopg2
+pyodbc
+pyyaml
+pandas
+numpy
+pathos

@@ -1,0 +1,9 @@
+
+# Here you can define credentials for different data sets and environments.
+#
+# DO NOT PUSH THIS FILE TO GitHub.
+
+# Data files
+scientists:
+  type: pandas.CSVDataSet
+  filepath: data/scientists.csv
