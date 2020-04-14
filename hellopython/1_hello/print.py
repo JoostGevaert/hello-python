@@ -1,6 +1,7 @@
 ### Very basic Python ###
 import os
 import sys
+import io
 
 ### print() tutorial |  Real Python ###
 # build-in python types
@@ -28,6 +29,20 @@ print('ok') # prints 'ok' on the same line, due to end=''
 
 
 ## Standard Streams ##
+# stdin: Standard in; Keyboard | stdout: Standard out; terminal
+# stderr: Standard error output; terminal
+# All can be redirected to a file, also the input can come from a file
+# e.g. python hello.py > file.txt | all normal output is redirected to file.txt
 print(sys.stdin, '| File Descriptor:', sys.stdin.fileno(), '\n',
      sys.stdout, '| File Descriptor:', sys.stdout.fileno(), '\n',
      sys.stderr, '| File Descriptor:', sys.stderr.fileno())
+
+# Redirecting the output for a single print() call:
+# Note that this will make the code immune to stream redirection from terminal
+with open('file.txt', mode='w') as file_object:
+    print('hello world', file=file_object)
+
+# Storing output in a fake file. Apparently useful for unit testing
+fake_file = io.StringIO()
+print('hello world', file=fake_file)
+fake_file.getvalue()
