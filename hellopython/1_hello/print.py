@@ -2,6 +2,7 @@
 import os
 import sys
 import io
+from pprint import pprint as pp
 
 ### print() tutorial |  Real Python ###
 # build-in python types
@@ -46,3 +47,8 @@ with open('file.txt', mode='w') as file_object:
 fake_file = io.StringIO()
 print('hello world', file=fake_file)
 fake_file.getvalue()
+
+# In IPython pprint() can be toggled with %pprint
+data = {'powers': [x**10 for x in range(10)]}
+cities = {'USA': {'Texas': {'Dallas': ['Irving']}}}
+pp(cities, depth=2)
