@@ -50,9 +50,11 @@ helloworld/
 2. Get WSL2 and the WindowsTerminal (Git Bash & Linux e.g. Ubuntu) up and running
     * https://towardsdatascience.com/data-science-on-windows-subsystem-for-linux-2-what-why-and-how-77545c9e5cdf
 	* https://www.bradleysawler.com/engineering/python-conda-wsl-2-ubuntu-setup-on-windows-10/
-	* ¡¡¡IMPORTANT!!!  
-	  set `git config --global core.autocrlf true` in Window's Git Bash  
-	  set `git config --global core.autocrlf input` in WSL2's Linux
+	* ¡¡¡IMPORTANT!!! line ending (CRLF or LF) settings for git  
+	  set `git config --global core.autocrlf false` in Window's Git Bash  
+	  set `git config --global core.autocrlf false` in WSL2's Linux  
+          Use a .gitattributes
+          In case something went wrong, use the find_line_endings.sh and fix_git_crlf-lf.sh to fix it.
 3. Get miniconda for Windows and WSL2's Linux & get pyenv for WSL2's Linux for projects that use pipenv ect.  
   Initialize conda on Windows: https://stackoverflow.com/a/58211115  
   pyenv in WSL2's Linux: https://realpython.com/intro-to-pyenv/#installing-pyenv  
