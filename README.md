@@ -53,7 +53,7 @@ helloworld/
 	* ¡¡¡IMPORTANT!!! line ending (CRLF or LF) settings for git  
 	  set `git config --global core.autocrlf false` in Window's Git Bash  
 	  set `git config --global core.autocrlf false` in WSL2's Linux  
-          Use a .gitattributes
+          Use a .gitattributes  
           In case something went wrong, use the find_line_endings.sh and fix_git_crlf-lf.sh to fix it.
 2. Get miniconda for Windows and WSL2's Linux.  
     * Windows: see miniconda installation instructions and initialize conda in Windows PowerShell following these instructions: https://stackoverflow.com/a/58211115  
