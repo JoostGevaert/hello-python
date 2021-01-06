@@ -3,12 +3,19 @@
 # 1. pygimli: https://github.com/JoostGevaert/gimli/blob/master/.gitattributes
 # 2. fix line ending .sh gist: https://gist.github.com/ajdruff/16427061a41ca8c08c05992a6c74f59e
 # 3. great article: https://adaptivepatchwork.com/2012/03/01/mind-the-end-of-your-line/
+# 4. the way to do it: https://code.visualstudio.com/docs/remote/troubleshooting#_resolving-git-line-ending-issues-in-containers-resulting-in-many-modified-files
+#    from this the 3 lines below followed:
+
+* text=auto eol=lf
+*.{cmd,[cC][mM][dD]} text eol=crlf
+*.{bat,[bB][aA][tT]} text eol=crlf
+
 # The .gitattributes below comes from Arup's designcheck2 project. No changes were made.
 
 ###############################################################################
 # Set default behavior to automatically normalize line endings.
 ###############################################################################
-* text=auto
+# * text=auto
 
 ###############################################################################
 # Set default behavior for command prompt diff.
