@@ -23,8 +23,8 @@ The fool proof solution: add a .gitattributes with the following three lines to 
 *.{cmd,[cC][mM][dD]} text eol=crlf
 *.{bat,[bB][aA][tT]} text eol=crlf
 ```
-Recommended autocrlf configuration:
-set `git config --global core.autocrlf true` in Window
+Recommended autocrlf configuration:  
+set `git config --global core.autocrlf true` in Window  
 set `git config --global core.autocrlf false` in WSL2's Linux  
 
 Cause of merge problems: there is a mix of files where some have CRLF and others have LF line endings.  
