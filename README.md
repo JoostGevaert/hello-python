@@ -51,7 +51,7 @@ Basic git commands:
   4. `git push`
 * git log -ADOG -> git graph  
   `git log --all --decorate --oneline --graph`
-* Access the global git configuration
+* Access the global git configuration  
   `git config --global --edit`
 
 ## Project Structure
