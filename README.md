@@ -51,6 +51,8 @@ Basic git commands:
   4. `git push`
 * git log -ADOG -> git graph  
   `git log --all --decorate --oneline --graph`
+* Access the global git configuration
+  `git config --global --edit`
 
 ## Project Structure
 The project sturcture is based on the Real Python tutorial found on:
