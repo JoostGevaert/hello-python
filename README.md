@@ -27,6 +27,7 @@ Recommended autocrlf configuration:
 set `git config --global core.autocrlf true` in Window  
 set `git config --global core.autocrlf false` in WSL2's Linux  
 
+#### CRLF & LF line endings  
 Cause of merge problems: there is a mix of files where some have CRLF and others have LF line endings.  
 In a git repo all files, except for Windows scripts, are supposed to have LF line endings.  
 Therefore one has two options for setting the autocrlf configuration when developing on Windows:
@@ -43,7 +44,7 @@ Source of .gitattributes: https://code.visualstudio.com/docs/remote/troubleshoot
 
 In case something went wrong, use the find_line_endings.sh and fix_git_crlf-lf.sh to fix all the line endings.
 
-Basic git commands:
+#### Basic git commands
 * git commit + push command sequence
   1. `git status`
   2. `git add .`
