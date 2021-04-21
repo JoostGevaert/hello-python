@@ -37,8 +37,8 @@ Setting the autocrlf configuration of git to true converts all line endings to C
 
 Apart from the autocrlf configuration there is the fool proof and fail proof solution of adding a .gitattributes file with the three lines shown above to your repo. This automatically handles the CRLF - LF line ending conversion for all participants in the repo. No on can make a mess of the line endings anymore this way!.
 
-References:
-Great article: https://adaptivepatchwork.com/2012/03/01/mind-the-end-of-your-line/
+References:  
+Great article: https://adaptivepatchwork.com/2012/03/01/mind-the-end-of-your-line/  
 Source of .gitattributes: https://code.visualstudio.com/docs/remote/troubleshooting#_resolving-git-line-ending-issues-in-containers-resulting-in-many-modified-files
 
 In case something went wrong, use the find_line_endings.sh and fix_git_crlf-lf.sh to fix all the line endings.
