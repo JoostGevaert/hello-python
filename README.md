@@ -44,7 +44,15 @@ Source of .gitattributes: https://code.visualstudio.com/docs/remote/troubleshoot
 
 In case something went wrong, use the find_line_endings.sh and fix_git_crlf-lf.sh to fix all the line endings.
 
-#### Basic git commands
+## Setting up Jupyter Notebooks
+* Add the currently active virtual environment to the Jupyter Kernels  
+  `python -m ipykernel install --name py36-test`
+* List the available Jupyter Kernels  
+  `jupyter kernelspec list`
+
+Source: https://janakiev.com/blog/jupyter-virtual-envs/
+
+## Basic git commands
 * git commit + push command sequence
   1. `git status`
   2. `git add .`
@@ -99,6 +107,8 @@ helloworld/
 ├── README.md  
 ├── requirements.txt  
 └── setup.py
+
+## VS-Code
 
 ## PyCharm shortcuts & handy stuff
 * `Ctrl + Shift + A` : Find a Pycharm shortcut.
