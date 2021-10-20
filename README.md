@@ -15,6 +15,7 @@ I recommend working with conda & conda + pip in Windows and conda & pyenv + pipe
 
 
 ## git
+### CRLF & LF line endings merge issues
 #### TL;DR
 Solving merge issues caused by a mix of CRLF (Carriage Return and Line Feed) and LF (Line Feed) line endings:
 the fool proof fail proof solution: add a .gitattributes with the following three lines to your repo:
@@ -39,20 +40,12 @@ Setting the autocrlf configuration of git to true converts all line endings to C
 Apart from the autocrlf configuration there is the fool proof and fail proof solution of adding a .gitattributes file with the three lines shown above to your repo. This automatically handles the CRLF - LF line ending conversion for all participants in the repo. No one can make a mess of the line endings anymore this way!
 
 References:  
-Great article that explains CRLF and LF in more detail: https://adaptivepatchwork.com/2012/03/01/mind-the-end-of-your-line/  
-Source of .gitattributes: https://code.visualstudio.com/docs/remote/troubleshooting#_resolving-git-line-ending-issues-in-containers-resulting-in-many-modified-files
+* [Great article that explains CRLF and LF in more detail](https://adaptivepatchwork.com/2012/03/01/mind-the-end-of-your-line/)  
+* [Source of .gitattributes](https://code.visualstudio.com/docs/remote/troubleshooting#_resolving-git-line-ending-issues-in-containers-resulting-in-many-modified-files)
 
 In case something went wrong, use the find_line_endings.sh and fix_git_crlf-lf.sh to fix all the line endings.
 
-## Jupyter Kernel setup
-* Add the currently active virtual environment to the Jupyter Kernels  
-  `python -m ipykernel install --name py36-test`
-* List the available Jupyter Kernels  
-  `jupyter kernelspec list`
-
-Source: https://janakiev.com/blog/jupyter-virtual-envs/
-
-## Basic git commands
+### Basic git commands
 * git commit + push command sequence
   1. `git status`
   2. `git add .`
@@ -62,10 +55,36 @@ Source: https://janakiev.com/blog/jupyter-virtual-envs/
   `git log --all --decorate --oneline --graph`
 * Access the global git configuration  
   `git config --global --edit`
+* Manage remotes and setup to enable pushing to multiple:  
+  ```
+  git remote -v
+  git remote add REMOTE-ID REMOTE-URL
+  git remote remove REMOTE-ID
+  
+  # Create a new remote called "all" with the URL of the primary repo.
+  git remote add all git@github.com:jigarius/toggl2redmine.git
+  # Re-register the remote as a push URL.
+  git remote set-url --add --push all git@github.com:jigarius/toggl2redmine.git
+  # Add a push URL to a remote. This means that "git push" will also push to this git URL.
+  git remote set-url --add --push all git@bitbucket.org:jigarius/toggl2redmine.git
+  # Push to all remote branches using:
+  git push all BRANCH
+  ``` 
+  [Source](https://jigarius.com/blog/multiple-git-remote-repositories#push-to-multiple-remotes)
+
+## Jupyter Kernel setup
+* Add the currently active virtual environment to the Jupyter Kernels  
+  `python -m ipykernel install --name py36-test`
+* List the available Jupyter Kernels  
+  `jupyter kernelspec list`
+* Remove a Jupyter Kernel  
+  `jupyter kernelspec uninstall unwanted-kernel`
+
+Source: https://janakiev.com/blog/jupyter-virtual-envs/
+
 
 ## Project Structure
-The project sturcture is based on the Real Python tutorial found on:
-https://realpython.com/python-application-layouts/
+The project sturcture is based on [this Real Python tutorial](https://realpython.com/python-application-layouts/)
 
 helloworld/  
 │  
@@ -107,29 +126,3 @@ helloworld/
 ├── README.md  
 ├── requirements.txt  
 └── setup.py
-
-## VS-Code
-
-## PyCharm shortcuts & handy stuff
-* `Ctrl + Shift + A` : Find a Pycharm shortcut.
-* `Alt + Click` : Set multiple cursors.
-* `Alt + F7` : Find usages of selected variable.
-* `Alt + J / Shift + Alt + J` : Select / unselect next occurence of variable.
-* `Shift + F6` : Refactor -> rename selected variable
-* `Ctrl + B` : Go to file and location of definition of selected class or function.
-* `Alt + Enter` : Show context actions.
-
-## Questions:
-* How does pipenv work with different versions of Python?
-    * Q: Do I have to install the Python version I want to use in conda, before being able to create a pipenv with that version of Python?  
-	  A: No. First of all, pyenv is meant to seperate the system Python from Python versions that are used for development.
-	  In a Linux, or WSL2 OS, pyenv can complement pipenv (or poetry or venv + pip).
-    * install pyenv: https://realpython.com/intro-to-pyenv/#installing-pyenv  
-	  pyenv + pipenv: https://towardsdatascience.com/python-environment-101-1d68bda3094d  
-	  https://pipenv.pypa.io/en/latest/advanced/#automatic-python-installation  
-* What is the resulting structure of the Windows pyenv + pipenv installation?  
-    1. (base) PS C:\Users\User1> pip install pyenv-win  
-	  No need to use conda's python though. pyenv can also be installed with `chocolatey`.
-	2. (base) PS C:\Users\User1> pip install --user pipx
-	3. (base) PS C:\Users\User1> pipx install pipenv
-	  Complication encountered with virtual environment creation. Seems no venv.
