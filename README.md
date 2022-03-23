@@ -1,22 +1,12 @@
 # Hello Python
-An introduction to python basics for Windows and what works best for me.
-
-## Setting up Windows for Development
-I recommend working with conda & conda + pip in Windows and conda & pyenv + pipenv in the Windows Subsystem for Linux (WSL2). Using pipenv in Windows without pyenv-win makes pipenv use the system Python, or the Python installed in the conda (base) environment and I found that working with pyenv-win is not convenient.
-1. Get miniconda for Windows: https://stackoverflow.com/a/58211115
-2. Install WSL2: https://docs.microsoft.com/en-us/windows/wsl/install-win10 & https://www.bradleysawler.com/engineering/python-conda-wsl-2-ubuntu-setup-on-windows-10/
-3. Get the Windows Terminal from the Microsoft Store. The Windows terminal allows you to open multiple command lines (CMD, PowerShell, you WSL Linux Distro) in the same program.
-4. Install git in the conda (base) environment on Windows. Note: in the WSL2 git comes preinstalled with your WSL2 Linux distro.
-5. ¡¡¡IMPORTANT!!! line ending (CRLF or LF) settings for git and the `.gitattributes`, see the section `git` below.
-6. Get pyenv + pipenv for WSL2's Linux for projects where you want to use pipenv or venv + pip.  
-  (a) install pyenv with apt: https://realpython.com/intro-to-pyenv/#installing-pyenv  
-  (b) pipenv with apt: https://pypi.org/project/pipenv/  
-  (c) Use `pipenv install` to install correct Python version (using pyenv under the hood) and dependencies from the Pipfile: https://pipenv.pypa.io/en/latest/advanced/#automatic-python-installation
+Some tips, tricks and explanations related to Python, Jupyter and git on Windows
 
 
-## git
-### CRLF & LF line endings merge issues
-#### TL;DR
+
+
+# git
+## CRLF (Windows) & LF (Linux & Mac) line endings merge issues
+### TL;DR
 Solving merge issues caused by a mix of CRLF (Carriage Return and Line Feed) and LF (Line Feed) line endings:
 the fool proof fail proof solution: add a .gitattributes with the following three lines to your repo:
 ```
@@ -28,7 +18,7 @@ Recommended autocrlf configurations:
 set `git config --global core.autocrlf true` in Window  
 set `git config --global core.autocrlf false` in WSL2's Linux  
 
-#### CRLF & LF line endings merge issues 
+### CRLF & LF line endings merge issues 
 The cause of these merge problems: there is a mix of files where some have CRLF and others have LF line endings.  
 In a git repo all files, except for Windows scripts, are supposed to have LF line endings.  
 Therefore one has two options for setting the autocrlf configuration when developing on Windows:
@@ -45,24 +35,14 @@ References:
 
 In case something went wrong, use the find_line_endings.sh and fix_git_crlf-lf.sh to fix all the line endings.
 
-<<<<<<< HEAD
-### Basic git commands
-=======
-## Jupyter Kernel setup
-* Add the currently active virtual environment to the Jupyter Kernels  
-  `python -m ipykernel install --name py36-test`
-* List the available Jupyter Kernels  
-  `jupyter kernelspec list`
 
-Source: https://janakiev.com/blog/jupyter-virtual-envs/
-
-## Basic git commands
->>>>>>> 8363e3c00c71f59d3905520cf763ff0d39704c26
+## Basic & handy `git` commands
 * git commit + push command sequence
   1. `git status`
   2. `git add .`
-  3. `git commit`
+  3. `git commit -m "semantic category: commit message"`
   4. `git push`
+* "Semantic git commit messages" put commits into categories: `feat:`, `fix:`, `docs:`, `style:`, `refactor:`, `test:`, `chore:`, [see this GitHub Gist](https://gist.github.com/joshbuchea/6f47e86d2510bce28f8e7f42ae84c716)
 * git log -ADOG -> git graph  
   `git log --all --decorate --oneline --graph`
 * Access the global git configuration  
@@ -84,6 +64,32 @@ Source: https://janakiev.com/blog/jupyter-virtual-envs/
   ``` 
   [Source](https://jigarius.com/blog/multiple-git-remote-repositories#push-to-multiple-remotes)
 
+
+
+# Python & Jupyter
+## Intro to using Python, `conda` and Python package management
+* Using Python in Arup is easiest by installing "Anaconda 3" from the Arup shop.
+* After installing Anaconda 3 you'll have access to the `conda` command in the (Anaconda) Command Prompt (cmd).
+* `conda` handles virtual environments for you and is also a package manager. 
+* Virtual environments allow you to use a different version of Python and Python packages for every project. This way 
+  you make sure that stuff works and you don't run into dependency issues where e.g. package A depends on version 1 of 
+  package C, while at the same time package B depends on version 2 of package C (very unhandy).
+* For Python the most well known package managers are 1. `pip` ([pypi.org](https://pypi.org/)) and 2. `conda` 
+  ([anaconda.org/anaconda/repo](https://anaconda.org/anaconda/repo)).
+* In a `conda` virtual environment you can install packages using both `pip install` and/or `conda install`.
+* It is best practice (and easiest) to create a `conda` virtual environment (`conda create --name xxx python=3.#`) and 
+  then either use `conda` as the package manager OR `pip` as the package manager, i.e. try not to mix 
+  using `conda install` and `pip install` in a single virtual environment (dependency issues).
+
+Example creating and managing your virtual environments with `conda` in the command line:
+* View a list of your virtual environments: `conda env list`
+* Create a new virtual environment: `conda create --name example_env python=3.10` 
+* Activate an environment: `conda activate example_env`
+* View a list of the installed packages in your currently active virutal environment: `conda list`
+* Deactivate currently active environment: `conda deactivate`
+* Installing packages in your CURRENTLY ACTIVE virtual env: `pip install pandas`
+
+
 ## Jupyter Kernel setup
 * Add the currently active virtual environment to the Jupyter Kernels  
   `python -m ipykernel install --name py36-test`
@@ -95,8 +101,8 @@ Source: https://janakiev.com/blog/jupyter-virtual-envs/
 Source: https://janakiev.com/blog/jupyter-virtual-envs/
 
 
-## Project Structure
-The project sturcture is based on [this Real Python tutorial](https://realpython.com/python-application-layouts/)
+## Python project Structure
+The project sturcture shown in the tree below and of this repo is based on [this Real Python tutorial](https://realpython.com/python-application-layouts/).
 
 helloworld/  
 │  
@@ -138,18 +144,51 @@ helloworld/
 ├── README.md  
 ├── requirements.txt  
 └── setup.py
-<<<<<<< HEAD
-=======
 
-## VS-Code
 
-## PyCharm shortcuts & handy stuff
+## Setting up Windows for Python development
+TO BE UPDATED
+I recommend working with conda & conda + pip in Windows and conda & pyenv + pipenv in the Windows Subsystem for Linux (WSL2). Using pipenv in Windows without pyenv-win makes pipenv use the system Python, or the Python installed in the conda (base) environment and I found that working with pyenv-win is not convenient.
+1. Get miniconda for Windows: https://stackoverflow.com/a/58211115
+2. Install WSL2: https://docs.microsoft.com/en-us/windows/wsl/install-win10 & https://www.bradleysawler.com/engineering/python-conda-wsl-2-ubuntu-setup-on-windows-10/
+3. Get the Windows Terminal from the Microsoft Store. The Windows terminal allows you to open multiple command lines (CMD, PowerShell, you WSL Linux Distro) in the same program.
+4. Install git in the conda (base) environment on Windows. Note: in the WSL2 git comes preinstalled with your WSL2 Linux distro.
+5. ¡¡¡IMPORTANT!!! line ending (CRLF or LF) settings for git and the `.gitattributes`, see the section `git` below.
+6. Get pyenv + pipenv for WSL2's Linux for projects where you want to use pipenv or venv + pip.  
+  (a) install pyenv with apt: https://realpython.com/intro-to-pyenv/#installing-pyenv  
+  (b) pipenv with apt: https://pypi.org/project/pipenv/  
+  (c) Use `pipenv install` to install correct Python version (using pyenv under the hood) and dependencies from the Pipfile: https://pipenv.pypa.io/en/latest/advanced/#automatic-python-installation
+
+
+
+# IDE Tips & Tricks
+## VS Code
+* [Windows keyboard shortcut cheatsheet](https://code.visualstudio.com/shortcuts/keyboard-shortcuts-windows.pdf)
+* `` Ctrl + ` `` : Show integrated terminal
+* `` Ctrl + Shift + ` `` : Create new integrated terminal
+* `Alt +  ↑ / ↓` : Move line up / down
+* `Alt + Shift +  ↑ / ↓` : Copy line above / below
+* `Alt + Click` : Insert multiple cursors
+* `Alt + Ctrl +  ↑ / ↓` : Insert cursor above / below
+* `Ctrl + U` : Undo last multi-cursor operation
+* `Ctrl + D` : Add selection to next Find match
+* `F12` : Go to definition of selected variable, function or class
+* `Alt + F12` : Peek Definition
+* `Ctrl + K F12` : Open Definition to the side
+* `F2` : Rename selected variable, function or class
+* `Ctrl + Space, Ctrl + I` : Trigger suggestion
+* `Ctrl + Shift + Space` : Trigger parameter hints
+* `Ctrl + .` : Show "Quick fix" context actions
+* `Shift + Alt + F` : Format document
+* `Ctrl + K Ctrl + F` : Format selection
+
+## PyCharm
 * `Ctrl + Shift + A` : Find a Pycharm shortcut.
 * `Alt + Click` : Set multiple cursors.
 * `Alt + F7` : Find usages of selected variable.
 * `Alt + J / Shift + Alt + J` : Select / unselect next occurence of variable.
 * `Shift + F6` : Refactor -> rename selected variable
-* `Ctrl + B` : Go to file and location of definition of selected class or function.
+* `Ctrl + B` : Go to definition of selected class, function or variable.
 * `Alt + Enter` : Show context actions.
 
 ## Questions:
@@ -166,4 +205,3 @@ helloworld/
 	2. (base) PS C:\Users\User1> pip install --user pipx
 	3. (base) PS C:\Users\User1> pipx install pipenv
 	  Complication encountered with virtual environment creation. Seems no venv.
->>>>>>> 8363e3c00c71f59d3905520cf763ff0d39704c26
