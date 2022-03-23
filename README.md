@@ -147,7 +147,9 @@ helloworld/
 
 
 ## Setting up Windows for Python development
+
 TO BE UPDATED
+
 I recommend working with conda & conda + pip in Windows and conda & pyenv + pipenv in the Windows Subsystem for Linux (WSL2). Using pipenv in Windows without pyenv-win makes pipenv use the system Python, or the Python installed in the conda (base) environment and I found that working with pyenv-win is not convenient.
 1. Get miniconda for Windows: https://stackoverflow.com/a/58211115
 2. Install WSL2: https://docs.microsoft.com/en-us/windows/wsl/install-win10 & https://www.bradleysawler.com/engineering/python-conda-wsl-2-ubuntu-setup-on-windows-10/
