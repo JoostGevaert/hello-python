@@ -68,17 +68,14 @@ In case something went wrong, use the find_line_endings.sh and fix_git_crlf-lf.s
 
 # Python & Jupyter
 ## Intro to using Python, `conda` and Python package management
-* Using Python in Arup is easiest by installing "Anaconda 3" from the Arup shop.
+* Using Python on Windows is easiest by [installing "Anaconda3"](https://docs.anaconda.com/anaconda/install/windows/). Make sure to tick the "Add Anaconda3 to my PATH environment variable" in step 8, this will make the `conda` command available in any Command Prompt (I never experienced the issues the installer warns us for). 
 * After installing Anaconda 3 you'll have access to the `conda` command in the (Anaconda) Command Prompt (cmd).
-* `conda` handles virtual environments for you and is also a package manager. 
-* Virtual environments allow you to use a different version of Python and Python packages for every project. This way 
-  you make sure that stuff works and you don't run into dependency issues where e.g. package A depends on version 1 of 
-  package C, while at the same time package B depends on version 2 of package C (very unhandy).
+* `conda` handles virtual environments for you and is also a package manager (not only Python packages, e.g. also R and compiled C++ packages). 
+* Virtual environments allow you to use a different version of Python and (Python) packages for every project. This way you make sure that stuff works and you don't run into dependency issues where e.g. package A depends on version 1 of package C, while at the same time package B depends on version 2 of package C (very unhandy).
 * For Python the most well known package managers are 1. `pip` ([pypi.org](https://pypi.org/)) and 2. `conda` 
   ([anaconda.org/anaconda/repo](https://anaconda.org/anaconda/repo)).
 * In a `conda` virtual environment you can install packages using both `pip install` and/or `conda install`.
-* It is best practice (and easiest) to create a `conda` virtual environment (`conda create --name xxx python=3.#`) and 
-  then either use `conda` as the package manager OR `pip` as the package manager, i.e. try not to mix 
+* It is best practice (and easiest) to create a `conda` virtual environment (`conda create --name xxx python=3.#`) and then either use `conda` as the package manager OR `pip` as the package manager, i.e. try not to mix 
   using `conda install` and `pip install` in a single virtual environment (dependency issues).
 
 Example creating and managing your virtual environments with `conda` in the command line:
@@ -86,8 +83,8 @@ Example creating and managing your virtual environments with `conda` in the comm
 * Create a new virtual environment: `conda create --name example_env python=3.10` 
 * Activate an environment: `conda activate example_env`
 * View a list of the installed packages in your currently active virutal environment: `conda list`
-* Deactivate currently active environment: `conda deactivate`
 * Installing packages in your CURRENTLY ACTIVE virtual env: `pip install pandas`
+* Deactivate currently active environment: `conda deactivate`
 
 
 ## Jupyter Kernel setup
