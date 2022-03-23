@@ -67,7 +67,7 @@ In case something went wrong, use the find_line_endings.sh and fix_git_crlf-lf.s
 
 
 # Python & Jupyter
-## Intro to using Python, `conda` and Python package management
+## Intro `conda` and Python package management
 * Using Python on Windows is easiest by [installing "Anaconda3"](https://docs.anaconda.com/anaconda/install/windows/). Make sure to tick the "Add Anaconda3 to my PATH environment variable" in step 8, this will make the `conda` command available in any Command Prompt (I never experienced the issues the installer warns us for). 
 * After installing Anaconda 3 you'll have access to the `conda` command in the (Anaconda) Command Prompt (cmd).
 * `conda` handles virtual environments for you and is also a package manager (not only Python packages, e.g. also R and compiled C++ packages). 
